@@ -46,7 +46,7 @@ func (rad *RadCache) UseZapLogger(logger *zap.SugaredLogger)  {
 }
 
 // 序列化为json
-func (rad *RadCache) Marshal(val *interface{}) (string, error) {
+func (rad *RadCache) Marshal(val interface{}) (string, error) {
 	re, err := json.Marshal(val)
 	if err != nil {
 		return "", err
@@ -74,7 +74,7 @@ func (rad *RadCache) Error(err interface{})  {
 }
 
 // 通用的设置值的方式
-func (rad *RadCache) Set(key string, value *interface{}, exp time.Duration) *redis.StatusCmd {
+func (rad *RadCache) Set(key string, value interface{}, exp time.Duration) *redis.StatusCmd {
 	val, err := rad.Marshal(value)
 	if err != nil {
 		cmd := redis.NewStatusCmd(rad.Ctx)
